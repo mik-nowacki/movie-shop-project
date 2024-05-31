@@ -1,4 +1,4 @@
-package com.example.movie_shop_backend.model;
+package com.example.movie_shop_backend.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,21 +11,21 @@ import lombok.Setter;
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @GeneratedValue
+    private Long id;
 
     @Column(name = "title")
-    String title;
+    private String title;
 
     @Column(name = "category")
-    String category;
+    private String category;
 
     @Column(name = "release_year")
-    Long releaseYear;
+    private Long releaseYear;
 
     @Column(name = "description")
-    String description;
+    private String description;
 
     @Column(name = "price")
-    Long price;
+    private Long price;
 }
