@@ -3,6 +3,8 @@ package com.example.movie_shop_backend.mappers;
 import com.example.movie_shop_backend.dto.MovieDto;
 import com.example.movie_shop_backend.models.Movie;
 
+import java.util.List;
+
 public class MovieMapper {
 
     public static MovieDto mapToMovieDto(Movie movie) {
@@ -26,5 +28,7 @@ public class MovieMapper {
                 movieDto.getPrice()
         );
     }
-
 }
+
+
+

@@ -5,19 +5,27 @@ import com.example.movie_shop_backend.mappers.MovieMapper;
 import com.example.movie_shop_backend.models.Movie;
 import com.example.movie_shop_backend.repositories.MovieRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import lombok.NoArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+
 @AllArgsConstructor
+@NoArgsConstructor
+@Service
 public class MovieService {
 
+    @Autowired
     private MovieRepository movieRepository;
 
-    public MovieDto createMovie(MovieDto movieDto){
-        Movie movie = MovieMapper.mapToMovie(movieDto);
-        Movie savedMovie = movieRepository.save(movie);
-        return MovieMapper.mapToMovieDto(savedMovie);
-    }
+    @Autowired
+    private ModelMapper modelMapper;
 
+    public MovieDto createMovie(MovieDto movieDto){
+        Movie movie = modelMapper.map(movieDto, Movie.class);
+        Movie savedMovie = movieRepository.save(movie);
+        return modelMapper.map(savedMovie, MovieDto.class);
+    }
 }

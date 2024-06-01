@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "movies")
 public class Movie {
-
+// TODO: wrong id generation
     @Id
     @GeneratedValue
     private Long id;
