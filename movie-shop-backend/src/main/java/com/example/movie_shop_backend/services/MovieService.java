@@ -4,10 +4,12 @@ import com.example.movie_shop_backend.dto.MovieDto;
 import com.example.movie_shop_backend.mappers.MovieMapper;
 import com.example.movie_shop_backend.models.Movie;
 import com.example.movie_shop_backend.repositories.MovieRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class MovieService {
 
     private MovieRepository movieRepository;
