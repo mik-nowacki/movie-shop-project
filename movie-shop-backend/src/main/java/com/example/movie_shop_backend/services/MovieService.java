@@ -29,9 +29,10 @@ public class MovieService {
     }
 
     public List<MovieDto> getAllMovies(){
-        List<Movie> movieList = movieRepository.findAll();
-        List movieDtoList = modelMapper.map(movieList, List.class);
+        return modelMapper.map(movieRepository.findAll(), List.class);
+    }
 
-        return movieDtoList;
+    public List<MovieDto> getMoviesByCategory(String category) {
+        return modelMapper.map(movieRepository.findByCategory(category), List.class);
     }
 }

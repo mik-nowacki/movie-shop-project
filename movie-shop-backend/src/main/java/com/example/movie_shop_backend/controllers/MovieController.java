@@ -29,4 +29,13 @@ public class MovieController {
         List<MovieDto> allMovies = movieService.getAllMovies();
         return new ResponseEntity<>(allMovies, HttpStatus.OK);
     }
+
+    @GetMapping("/movies/{category}")
+    public ResponseEntity<List<MovieDto>> getMoviesByCategory(@PathVariable String category){
+        List<MovieDto> moviesByCategory = movieService.getMoviesByCategory(category);
+        return new ResponseEntity<>(moviesByCategory, HttpStatus.OK);
+    }
+
+
+
 }
