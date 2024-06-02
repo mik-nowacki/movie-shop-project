@@ -14,23 +14,30 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("movies")
 public class MovieController {
 
     private MovieService movieService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto){
         MovieDto savedMovie = movieService.createMovie(movieDto);
         return new ResponseEntity<>(savedMovie, HttpStatus.CREATED);
     }
 
-    @GetMapping("/movies")
+    @GetMapping("/allMovies")
     public ResponseEntity<List<MovieDto>> getAll(){
         List<MovieDto> allMovies = movieService.getAllMovies();
         return new ResponseEntity<>(allMovies, HttpStatus.OK);
     }
 
-    @GetMapping("/movies/{category}")
+    @GetMapping("/movie/{id}")
+    public ResponseEntity<MovieDto> getMovieById(@PathVariable Long id){
+        MovieDto movieDto = movieService.getMovieById(id);
+        return new ResponseEntity<>(movieDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/{category}")
     public ResponseEntity<List<MovieDto>> getMoviesByCategory(@PathVariable String category){
         List<MovieDto> moviesByCategory = movieService.getMoviesByCategory(category);
         return new ResponseEntity<>(moviesByCategory, HttpStatus.OK);

@@ -22,16 +22,24 @@ public class MovieService {
     @Autowired
     private ModelMapper modelMapper;
 
+    // POST a new movie
     public MovieDto createMovie(MovieDto movieDto){
         Movie movie = modelMapper.map(movieDto, Movie.class);
         Movie savedMovie = movieRepository.save(movie);
         return modelMapper.map(savedMovie, MovieDto.class);
     }
 
+    // GET all
     public List<MovieDto> getAllMovies(){
         return modelMapper.map(movieRepository.findAll(), List.class);
     }
 
+    // GET by id
+    public MovieDto getMovieById(Long id) {
+        return modelMapper.map(movieRepository.findById(id), MovieDto.class);
+    }
+
+    // GET by category
     public List<MovieDto> getMoviesByCategory(String category) {
         return modelMapper.map(movieRepository.findByCategory(category), List.class);
     }
